@@ -17,7 +17,7 @@ public class T4_Button extends Frame implements WindowListener, ActionListener{
 		
 		
 		// 이름표(Label) :레이블 컴포넌트
-		Label lbl = new Label("회 원 가 입 폼!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		Label lbl = new Label("회 원 가 입 폼!@@@@@@@@@@@@@@@@@@");
 		this.add(lbl);
 		
 		
