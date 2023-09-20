@@ -33,7 +33,7 @@ public class T4_Button extends Frame implements WindowListener, ActionListener{
 		/*------------------------------------------------------*/
 	
 		btnExit.addActionListener(this); //버튼을 누르는 '행위'이기 때문에 ActionListener 사용 //다중인터페이스 
-		
+		//버튼을. 감시하고 있는 애
 		addWindowListener(this); //현재 떠있는 화면 거 감시해라
 	}
 	
@@ -66,7 +66,7 @@ public class T4_Button extends Frame implements WindowListener, ActionListener{
 	public void windowDeactivated(WindowEvent e) {}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { // 이 메소드에서 동작을 적어주면 됨
 		System.exit(0);
 	}
 }

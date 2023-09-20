@@ -8,11 +8,11 @@ import java.awt.event.WindowListener;
 public class T3_Lable extends Frame implements WindowListener{
 	
 	public T3_Lable() {
-		super("프레임 테스트");
+		super("프레임 테스트"); //super 사용?
 		setSize(400, 300);
 		
 		//이름(Label)
-		Label lbl = new Label("회 원 가 입 폼");
+		Label lbl = new Label("회 원 가 입 폼"); 
 		this.add(lbl);
 		
 		setVisible(true);
