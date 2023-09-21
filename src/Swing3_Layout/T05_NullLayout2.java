@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import java.awt.Font;
 
 @SuppressWarnings("serial")
 public class T05_NullLayout2 extends JFrame {
@@ -28,19 +29,19 @@ public class T05_NullLayout2 extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
-		setLayout(null);
+		getContentPane().setLayout(null);
 		
-		add(getLblName());
-		add(getLblAge());
-		add(getTxtName());
-		add(getTxtAge());
+		getContentPane().add(getLblName());
+		getContentPane().add(getLblAge());
+		getContentPane().add(getTxtName());
+		getContentPane().add(getTxtAge());
 		
-		add(getLblTitle());
-		add(getTxtaContent());
+		getContentPane().add(getLblTitle());
+		getContentPane().add(getTxtaContent());
 		
-		add(getBtnInput());
-		add(getBtnReset());
-		add(getBtnExit());
+		getContentPane().add(getBtnInput());
+		getContentPane().add(getBtnReset());
+		getContentPane().add(getBtnExit());
 		
 		/* ------------------------------------- */
 		
@@ -79,8 +80,9 @@ public class T05_NullLayout2 extends JFrame {
 	// 입력내용 확인하는 텍스트박스
 	private JTextArea getTxtaContent() {
 		txtaContent = new JTextArea();
+		txtaContent.setEnabled(false);
 		txtaContent.setBackground(Color.CYAN);
-		txtaContent.setBounds(300, 50, 150, 100);
+		txtaContent.setBounds(345, 78, 184, 129);
 		return txtaContent;
 	}
 
@@ -122,20 +124,23 @@ public class T05_NullLayout2 extends JFrame {
 
 	private JButton getBtnInput() {
 		btnInput = new JButton("회원가입");
-		btnInput.setBounds(xPos, yPos+150, 100, 40);
+		btnInput.setFont(new Font("굴림", Font.PLAIN, 16));
+		btnInput.setBounds(77, 250, 100, 40);
 		return btnInput;
 	}
 	
 	private JButton getBtnReset() {
 		btnReset = new JButton("다시입력");
-		btnReset.setBounds(xPos+100, yPos+150, 100, 40);
+		btnReset.setFont(new Font("굴림", Font.PLAIN, 16));
+		btnReset.setBounds(240, 250, 100, 40);
 		return btnReset;
 	}
 
 	private JButton getBtnExit() {
 		btnExit = new JButton();
+		btnExit.setFont(new Font("굴림", Font.PLAIN, 16));
 		btnExit.setText("종 료");
-		btnExit.setBounds(xPos+200, yPos+150, 100, 40);
+		btnExit.setBounds(394, 250, 100, 40);
 		return btnExit;
 	}
 
