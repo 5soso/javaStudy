@@ -5,6 +5,7 @@ import java.awt.Component;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
@@ -13,7 +14,7 @@ import javax.swing.SwingUtilities;
 public class T02_BorderLayout2 extends JFrame {
 	private JButton btnNorth, btnWest, btnEast; 
 	private JTextField txtSouth;
-	private JTextField txtCenter;
+	private JTextArea txtCenter;
 	
 	public T02_BorderLayout2() {
 		setTitle("BorderLayout 연습");
@@ -22,7 +23,7 @@ public class T02_BorderLayout2 extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
-		this.getContentPane().add(getBtnNorth(), BorderLayout.NORTH);
+		this.getContentPane().add(getBtnNorth(), BorderLayout.NORTH); //this는 JFrame 
 		this.getContentPane().add(getTxtSouth(), BorderLayout.SOUTH);
 		this.getContentPane().add(getBtnWest(), BorderLayout.WEST);
 		this.getContentPane().add(getBtnEast(), BorderLayout.EAST);
@@ -30,8 +31,8 @@ public class T02_BorderLayout2 extends JFrame {
 	}
 
 	
-	private JTextField getTxtCenter() {
-		txtCenter = new JTextField("센터");
+	private JTextArea getTxtCenter() {
+		txtCenter = new JTextArea("센터");
 		return txtCenter;
 	}
 

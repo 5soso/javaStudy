@@ -16,7 +16,7 @@ public class T01_FlowLayout extends JFrame {
 	private JButton btnOk, btnExit, btnAnswer1, btnAnswer2, btnAnswer3, btnInput; 
 	private JLabel lblName;
 
-	public T01_FlowLayout() { //처음부터 차곡차곡 쌓는 레이아웃
+	public T01_FlowLayout() { //처음부터 차곡차곡 쌓는 레이아웃, 가운데에서 ->-<-
 		setTitle("FlowLayout연습");
 		setSize(400,300); //setSize 크기만 주는 것(무조건 가운데 띄우기 위해서) / setB 위치를 줌. 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 창 닫기
@@ -104,8 +104,8 @@ public class T01_FlowLayout extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, "작업을 종료합니다."); // 메세지 띄울 때 사용한다. 메세지 종류 많아서 option
 				//JOptionPane.showMessageDialog(null, "작업을 종료합니다.", "종료창", JOptionPane.PLAIN_MESSAGE); //PLAIN_MESSAGE 아무것도 없음
-				//JOptionPane.showMessageDialog(null, "작업을 종료합니다.", "종료창", JOptionPane.YES_OPTION); // YES_OPTION 엑스
-				JOptionPane.showMessageDialog(null, "작업을 종료합니다.", "종료창", JOptionPane.WARNING_MESSAGE); // WARNING_MESSAGE 물음표
+				JOptionPane.showMessageDialog(null, "작업을 종료합니다.", "종료창", JOptionPane.YES_OPTION); // YES_OPTION 엑스
+				//JOptionPane.showMessageDialog(null, "작업을 종료합니다.", "종료창", JOptionPane.WARNING_MESSAGE); // WARNING_MESSAGE 물음표
 				System.exit(0); //이 명령 때문에 종료 버튼 누르면 닫힘.
 			}
 		});

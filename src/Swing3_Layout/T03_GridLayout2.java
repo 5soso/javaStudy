@@ -1,6 +1,5 @@
 package Swing3_Layout;
 
-import java.awt.Component;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -11,6 +10,7 @@ import javax.swing.SwingUtilities;
 @SuppressWarnings("serial")
 public class T03_GridLayout2 extends JFrame{ 
 	private JButton[][] btn; //같은 타입, 똑같은 내용 = 배열로 줄 수 있음.
+	private JButton btn6;
 	
 	public T03_GridLayout2() {
 		setTitle("GrideLayout 연습");
@@ -32,10 +32,15 @@ public class T03_GridLayout2 extends JFrame{
 //		add(getBtn3());
 //		add(getBtn4());
 //		add(getBtn5());
-//		add(getBtn6());
+		add(getBtn6());
 
 	}
 	
+	private JButton getBtn6() {
+		btn6 = new JButton();
+		return btn6;
+	}
+
 	private JButton[][] getBtn() {
 		int cnt = 1;
 		btn = new JButton[2][3];
