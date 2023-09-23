@@ -57,7 +57,7 @@ public class InsaDAO {
 		vo = new InsaVO();
 		try { //3박자 
 			sql = "select * from insa where name = ?";
-			pstmt = conn.prepareCall(sql);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, name);
 			rs = pstmt.executeQuery();
 			

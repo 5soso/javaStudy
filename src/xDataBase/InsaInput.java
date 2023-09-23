@@ -187,7 +187,7 @@ public class InsaInput extends JFrame {
 				String gender;
 				String ipsail = cbYY.getSelectedItem()+"-"+cbMM.getSelectedItem()+"-"+cbDD.getSelectedItem(); //getSelectedItem()의 뜻?
 				
-				if(name.trim().equals("")) {	//trim, jptionpane 공부하기
+				if(name.trim().equals("")) {	//trim, joptionpane 공부하기
 					JOptionPane.showMessageDialog(null, "성명을 입력하세요?");
 					txtName.requestFocus();
 				}
