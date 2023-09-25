@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -40,7 +41,7 @@ public class InsaSearch extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		
-		setVisible(true);
+		setVisible(true); //메인을 지우고 생성자 안에 setVisivle(true)를 꼭 넣어줘야한다.
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -86,6 +87,7 @@ public class InsaSearch extends JFrame {
 		pn2.add(lblName_3);
 		
 		txtName = new JTextField();
+		txtName.setEditable(false);
 		txtName.setFont(new Font("굴림", Font.PLAIN, 22));
 		txtName.setBounds(327, 42, 290, 45);
 		txtName.setText(vo.getName());
@@ -194,17 +196,55 @@ public class InsaSearch extends JFrame {
 		
 		/* ================================================ */
 		
-		// 회원정보수정 버튼
+		// 회원정보수정 버튼 //만들기 전에 필드명 보기
 		btnUpdate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent e) {  //이름은 동명이인 처리했으므로, 디자인에서 수정 못 하게 처리.. 
+				String age = txtAge.getText();
+				String gender;
+				String ipsail = cbYY.getSelectedItem()+"-"+cbMM.getSelectedItem()+"-"+cbYY.getSelectedItem(); //combobox는 item으로 읽는다.
+
+				if(age.trim().equals("")) {
+					JOptionPane.showMessageDialog(null, "나이는 숫자로만 입력하세요.");
+					txtAge.requestFocus();
+				}
+				else {
+					if(rdMale.isSelected()) gender = "남자";
+					else gender = "여자";
+					
+					// 정상적으로 자료가 입력되어 넘어온다면, 모든 값을 vo에 담아서 DB에 저장(수정)처리한다.
+					vo.setName(txtName.getText());
+					vo.setAge(Integer.parseInt(age)); //202번 라인 보면 나이가 String타입이므로 integer로 형변환함.
+					vo.setGender(gender);
+					vo.setIpsail(ipsail);
+					
+					res = dao.setInsaUpdate(vo);
+
+					if(res == 0) {
+						JOptionPane.showMessageDialog(null, "회원정보 수정 실패. 다시 수정하세요.");
+						//txtName.requestFocus(); //이름은 수정할 수 없도록 했으니까, 필요없음.
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "회원정보가 수정되었습니다.");
+					}
+				}
 			}
 		});
 		
-		// 다시입력 버튼
+		// 삭제 버튼
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				String name = txtName.getText();
+				//System.out.println("name : " + name); //에러나면 찍어보기
+				int ans = JOptionPane.showConfirmDialog(null, name + "회원을 삭제하시겠습니까?", "회원삭제", JOptionPane.YES_NO_CANCEL_OPTION); //삭제처리하기 전에 한번 물어보기
+				if(ans == 0) {
+					res = dao.setInsaDelete(name);
+					if(res == 0) JOptionPane.showMessageDialog(null, "회원정보 삭제에 실패했습니다. 다시 확인하세요.");
+					else {
+						JOptionPane.showMessageDialog(null, "회원 정보가 삭제되었습니다.");
+						dispose();
+					}
+				}
+				else JOptionPane.showMessageDialog(null, "회원 삭제가 취소되었습니다.");
 			}
 		});
 		
@@ -232,5 +272,5 @@ public class InsaSearch extends JFrame {
 //		new InsaSearch(vo);
 //		frame.setVisible(true);
 //	}
-//}
+//} 메인이 여러개 있으면 실행할 때마다 해당 프로그램을 띄우니까, 없애도 됨. 대신 생성자 안에 setvisible(true) 꼭 쓰기. 
 }
