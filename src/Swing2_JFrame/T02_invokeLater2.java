@@ -34,7 +34,7 @@ public class T02_invokeLater2 extends JFrame{
 			}
 		});
 		
-		System.out.println("33333333333333333333333");
+		System.out.println("3 3333333333333333333333");
 		System.out.println(Thread.currentThread().getName()); 
 	}
 }

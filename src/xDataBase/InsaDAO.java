@@ -55,6 +55,7 @@ public class InsaDAO {
 	//회원명 검색(회원 중복처리)
 	public InsaVO getNameSearch(String name) {
 		vo = new InsaVO();
+		
 		try { //3박자 
 			sql = "select * from insa where name = ?";
 			pstmt = conn.prepareStatement(sql);

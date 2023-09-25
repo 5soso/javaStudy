@@ -64,7 +64,7 @@ public class InsaDAO {
 			rs = pstmt.executeQuery(); //반환값(=출력값)이 있다. // rs - executeQuery 문법외우기
 			
 			if(rs.next()) { //자료가 있으면,
-				vo.setIdx(rs.getInt("idx")); //()안에는 레코드필드명? // rs로 읽은 idx 값을 vo에 저장해라
+				vo.setIdx(rs.getInt("idx")); //()안에는 레코드필드명 // rs로 읽은 idx 값을 vo에 저장해라
 				vo.setName(rs.getString("name")); //getString = 컬럼타입, name = 컬럼타입
 				vo.setAge(rs.getInt("age"));
 				vo.setGender(rs.getString("gender"));
@@ -79,13 +79,13 @@ public class InsaDAO {
 	}
 
 	//회원가입 처리 
-	public int setInsaInput(InsaVO vo2) { //타입을 int로 하는 이유? res가 0이면 받는 게 없고, res가 1이면 받은게 있다는 뜻? 
+	public int setInsaInput(InsaVO vo) { //타입을 int로 하는 이유? res가 0이면 받는 게 없고, res가 1이면 받은게 있다는 뜻? 
 		int res = 0;
 		try {
-			sql = "insert into insa value (defualt,?,?,?,?)";
+			sql = "insert into insa value (default,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql); //위의 sql문을 DB에서 읽지 못 하니까, prepareStatement가 sql문을 읽어서 DB에 값을 넣어준다..
 			pstmt.setString(1, vo.getName());
-			pstmt.setInt(1, vo.getAge());
+			pstmt.setInt(2, vo.getAge());
 			pstmt.setString(3, vo.getGender());
 			pstmt.setString(4, vo.getIpsail());
 			res = pstmt.executeUpdate(); //입력값을 res로 넘겨준다.

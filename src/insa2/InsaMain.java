@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -60,7 +61,7 @@ public class InsaMain extends JFrame {
 		pn2.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(InsaMain.class.getResource("/insa2/images/14.jpg")));
+		lblNewLabel_1.setIcon(new ImageIcon(InsaMain.class.getResource("/insa2/images/03.jpg")));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(12, 10, 760, 346);
 		pn2.add(lblNewLabel_1);
@@ -102,6 +103,8 @@ public class InsaMain extends JFrame {
 		//사원 개별조회 버튼
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String name = JOptionPane.showInputDialog(null, "검색할 사원의 성명을 입력하세요?"); //showInputDiaLog() :
+				
 			}
 		});
 		

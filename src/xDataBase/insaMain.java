@@ -42,7 +42,7 @@ public class insaMain extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLocationRelativeTo(null); //창이 가운데 뜨게 한다.
-		setResizable(false);
+		setResizable(false); //false는 0으로서, 창을 사용자 마음대로 조절하지 못 하게 한다. 가로 혹은 세로로 늘리거나 줄일 수 없음. setSize()와 함께 쓰기 
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -65,7 +65,7 @@ public class insaMain extends JFrame {
 		
 		JLabel lbMain = new JLabel("");
 		lbMain.setHorizontalAlignment(SwingConstants.CENTER);
-		lbMain.setIcon(new ImageIcon(insaMain.class.getResource("/xDataBase/images/1.jpg")));
+		lbMain.setIcon(new ImageIcon(insaMain.class.getResource("/xDataBase/images/01.jpg")));
 		lbMain.setBounds(20, 20, 715, 325);
 		pn2.add(lbMain);
 		
@@ -118,6 +118,7 @@ public class insaMain extends JFrame {
 		// 전체조회 버튼
 		btnList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//new InsaList();
 			}
 		});
 		

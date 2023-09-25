@@ -114,10 +114,11 @@ public class InsaInput extends JFrame {
 		String[] mm = new String[12];
 		String[] dd = new String[31];
 		
+		//// 입사일. 날짜콤보박스 디자인
 		int imsi;
 		for(int i=0; i<yy.length; i++) {
 			imsi = i + 2000;
-			yy[i] = imsi + "";
+			yy[i] = imsi + ""; //날짜는 int타입이니까, String타입으로 변환해준다 + "";
 		}
 		for(int i=0; i<mm.length; i++) {
 			mm[i] = (i+1) + "";
@@ -126,18 +127,17 @@ public class InsaInput extends JFrame {
 			dd[i] = (i+1) + "";
 		}
 		
-		
-		JComboBox cbYY = new JComboBox(yy);
+		JComboBox cbYY = new JComboBox(yy); //년도 콤보박스에 년도 배열 yy를 넣어서 디자인함.
 		cbYY.setFont(new Font("굴림", Font.PLAIN, 20));
 		cbYY.setBounds(308, 307, 86, 30);
 		pn2.add(cbYY);
 		
-		JComboBox cbMM = new JComboBox(mm);
+		JComboBox cbMM = new JComboBox(mm);//월 콤보박스에 월 배열 mm를 넣어서 디자인함.
 		cbMM.setFont(new Font("굴림", Font.PLAIN, 20));
 		cbMM.setBounds(454, 307, 62, 30);
 		pn2.add(cbMM);
 		
-		JComboBox cbDD = new JComboBox(dd);
+		JComboBox cbDD = new JComboBox(dd);//일 콤보박스에 일 배열 dd를 넣어서 디자인함 
 		cbDD.setFont(new Font("굴림", Font.PLAIN, 20));
 		cbDD.setBounds(584, 307, 53, 30);
 		pn2.add(cbDD);
@@ -208,11 +208,11 @@ public class InsaInput extends JFrame {
 						// 모든 체크(요구사항)이 끝나면, DB에 새로운 회원을 가입처리한다.
 						// 회원명 중복처리
 						vo = dao.getNameSearch(name);
-						if(vo.getName() != null) { //중복되면 실행
+						if(vo.getName() != null) { //중복되면 실행 (DB에 있던 데이터를 담은 vo에 이름이 있으면)
 							JOptionPane.showMessageDialog(null, "이미 가입된 회원입니다. 다시 입력하세요.");
 							txtName.requestFocus();
 						}
-						else { //중복되지않았으면
+						else { //중복되지 않았으면
 							//정상적으로 자료가 입력되었다면, vo에 담아있는 값을 DB에 저장한다.
 							vo.setName(name);
 							vo.setAge(Integer.parseInt(age)); //age를 String으로 선언했기 때문에 
@@ -265,7 +265,7 @@ public class InsaInput extends JFrame {
 		// 창닫기 버튼
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				dispose(); //잠깐 닫아야하는 거라서 dispose메소드를 쓴다.
 			}
 		});
 	}

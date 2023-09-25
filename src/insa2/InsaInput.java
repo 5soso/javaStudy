@@ -33,10 +33,9 @@ public class InsaInput extends JFrame {
 	InsaVO vo = null;
 	
 	int res = 0;
-
-
 	
 	public InsaInput() {
+		setVisible(true);//main 메소드 주석처리하고 setVisivle() 메소드사용. 해석 : 나를 생성하는 시점에서 보여달라.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800,600);
 		contentPane = new JPanel();
@@ -120,7 +119,7 @@ public class InsaInput extends JFrame {
 		String[] mm = new String[12];
 		String[] dd = new String[31];
 		
-		int imsi; // imsi로 변수를 준 이유? 안 줘도 됨..
+		int imsi; // imsi 변수 준 이유? 안 줘도 됨..
 		for(int i=0; i<yy.length; i++) {
 			imsi = i + 2000;
 			yy[i] = imsi + ""; //int타입을 String타입으로 변환했다.
@@ -132,8 +131,6 @@ public class InsaInput extends JFrame {
 		for(int i=0; i<dd.length; i++) {
 			dd[i] = (i+1) + "";
 		}
-				
-		
 		JComboBox cbYY = new JComboBox(yy); // yy 넣기
 		cbYY.setFont(new Font("굴림", Font.PLAIN, 18));
 		cbYY.setBounds(302, 319, 84, 23);
@@ -198,11 +195,11 @@ public class InsaInput extends JFrame {
 				//trim()  : 문자열의 양 옆, 즉 문자열의 제일 왼쪽 공백, 오른쪽 공백만 제거
 				//JOptionPane : 사용자에게 값을 묻거나 정보를 알려주는 표준 대화 상자를 쉽게 팝업해서 이용할 수 있게 해주는 클래스이다.
 				if(name.trim().equals("")) {
-					JOptionPane.showMessageDialog(null, "성명을 입력하세요?"); //앞에 null은 무슨 뜻..?
+					JOptionPane.showMessageDialog(null, "성명을 다시 입력하세요?"); //앞에 null은 무슨 뜻..?
 					txtName.requestFocus(); //txtName(JTextField로 만든 txtName 화면)으로 커서를 갖다 놓아라.
 				}
 				else if(age.trim().equals("")) {
-					JOptionPane.showMessageDialog(null, "나이를 입력하세요?");
+					JOptionPane.showMessageDialog(null, "나이를 다시 입력하세요?");
 					txtAge.requestFocus(); //txtAge(JTextField로 만든 txtAge 화면)으로 커서를 갖다 놓아라.
 				}
 				else {
@@ -214,7 +211,6 @@ public class InsaInput extends JFrame {
 						if(rdMale.isSelected()) gender = "남자"; //만약, 남자라디오버튼이 선택되었으면, 성별은 남자로 등록해라. //기본값을 남자로 두었기 때문에.
 						else gender = "여자";
 						
-						// 202번라인 else문이 끝나지 않음.
 						// 모든 체크(요구사항)이 끝나면, DB에 새로운 회원을 가입처리한다.
 						// 회원명 중복처리
 						vo = dao.getNameSearch(name);
@@ -225,12 +221,12 @@ public class InsaInput extends JFrame {
 						else { //중복되지 않았으면,
 							//정삭적으로 자료가 입력되었다면, vo에 담아있는 값을 DB에 저장한다.
 							vo.setName(name);
-							vo.setAge(Integer.parseInt(age)); //age를 String으로 선언했기 때문에(어디에서?..), int로 강제형변환을 해준다.
+							vo.setAge(Integer.parseInt(age)); //age를 String으로 선언했기 때문에(어디에서?..위에서ㅎ), int로 강제형변환을 해준다.
 							vo.setGender(gender);
 							vo.setIpsail(ipsail);
 							
 							//vo에 담긴 자료를 DB에 저장시켜준다.
-							res = dao.setInsaInput(vo);
+							res = dao.setInsaInput(vo); //바로 위에서 자료체크해서..DB에 저장시켰는데 왜 또 여기서 하는지?
 							
 							if(res == 0) { // res == 0이면 해석 : 
 								JOptionPane.showMessageDialog(null, "회원가입 실패. 다시 입력하세요");
@@ -284,18 +280,18 @@ public class InsaInput extends JFrame {
 	}
 	
 // 메인메소드 주석처리한 이유 :  
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InsaInput frame = new InsaInput();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					InsaInput frame = new InsaInput();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 	
 	
 } 
